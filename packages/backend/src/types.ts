@@ -9,3 +9,8 @@ export interface JwtPayload {
 }
 
 export type AuthUser = user;
+
+export type PaginationResponse<T> = {
+  list: T[];
+  totalCount: number;
+};
