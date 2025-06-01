@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './modules/auth/auth.module';
 import { CatsModule } from './modules/cats/cats.module';
+import { LetterModule } from './modules/letter/letter.module';
 import { NftModule } from './modules/nft/nft.module';
 import { DatabaseModule } from './providers/database/database.module';
 
@@ -14,6 +15,7 @@ import { DatabaseModule } from './providers/database/database.module';
     AuthModule,
     CatsModule,
     NftModule,
+    LetterModule,
   ],
   controllers: [AppController],
   providers: [AppService],
