@@ -3,9 +3,9 @@ import { IsInt, IsOptional } from 'class-validator';
 export class PaginationDto {
   @IsInt()
   @IsOptional()
-  page: number;
+  page: number = 1;
 
   @IsInt()
   @IsOptional()
-  limit: number;
+  size: number = 10;
 }

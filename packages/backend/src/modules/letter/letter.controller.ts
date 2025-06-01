@@ -11,6 +11,7 @@ import {
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { user } from 'prisma/db';
 import { User } from 'src/commons/decorators/user.decorator';
+import { PaginationDto } from 'src/commons/dto/pagination.dto';
 import { AuthGuard } from 'src/commons/guards/auth.guard';
 import { PostLetterDto } from './dtos';
 import { LetterService } from './letter.service';
@@ -40,27 +41,21 @@ export class LetterController {
   @Get('received')
   public async getReceivedLetters(
     @User() user: user,
-    @Query('page') page: number,
-    @Query('size') size: number,
+    @Query() query: PaginationDto,
   ) {
     return this.letterService.getReceivedLetters(
       user.id,
-      Number(page),
-      Number(size),
+      query.page,
+      query.size,
     );
   }
 
   @Get('sent')
   public async getSentLetters(
     @User() user: user,
-    @Query('page') page: number,
-    @Query('size') size: number,
+    @Query() query: PaginationDto,
   ) {
-    return this.letterService.getSentLetters(
-      user.id,
-      Number(page),
-      Number(size),
-    );
+    return this.letterService.getSentLetters(user.id, query.page, query.size);
   }
 
   @Get(':letterId')
